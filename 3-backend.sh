@@ -1,5 +1,4 @@
 #!/bin/bash
-
 component=backend
 logFile=/tmp/$component.log
 appUser=expense
@@ -36,4 +35,39 @@ else
     stat $? 
 fi
 
+echo -n "Downloading $component Content:"
+curl -o /tmp/$component.zip https://expense-web-app.s3.amazonaws.com/$component.zip &>> $logFile
 stat $?
+
+echo -n "Extracting $component Content:"
+cd /app/
+unzip -o /tmp/$component.zip &>> $logFile
+stat $?
+
+echo -n "Generating $component artifacacts"
+npm install &>> $logFile
+stat $?
+
+echo -n "Comfiguring the permissions:"
+chmod -R 755 /app && chown -R $appUser:$appUser /app
+stat $?
+
+echo -n "Configuring systemd service:"
+cp $component.service /etc/systemd/system/$component.service
+stat $? 
+
+echo -n "Installing $component client:"
+dnf install mysql-server -y  &>> $logFile
+stat $? 
+
+echo -n "Injecting $component schema:"
+mysql -h 172.31.41.47 -uroot -pExpenseApp@1 < /app/schema/backend.sql &>> $logFile
+stat $? 
+
+echo -n "Starting $component Service:"
+systemctl daemon-reload  &>> $logFile
+systemctl enable backend &>> $logFile
+systemctl start backend  &>> $logFile
+stat $? 
+
+echo -n "*****  $component Execution Completed  *****"
