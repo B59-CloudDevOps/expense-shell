@@ -24,7 +24,7 @@ dnf module enable nodejs:20 -y  &>> $logFile
 stat $? 
 
 echo -n "Creating Application User - $appUser :"
-mkddir /app 
+mkdir /app 
 useradd $appUser &>> $logFile
 
 stat $?
