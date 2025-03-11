@@ -3,18 +3,19 @@
 echo -e "Installing Nginx:"
 dnf install nginx -y     &>> /tmp/frontend.log
 if [ $? -eq 0 ]; then 
-    echo -e "Nginx Installed Successfully"
+    echo -e "Success"
 else
-    echo -e "Nginx Installation Failed"
+    echo -e "Failure"
     exit 1
 fi
+
 echo -e "Starting Nginx:"
 systemctl enable nginx   &>> /tmp/frontend.log
 systemctl start nginx    &>> /tmp/frontend.log
 if [ $? -eq 0 ]; then 
-    echo -e "Nginx Started Successfully"
+    echo -e "Success"
 else
-    echo -e "Nginx Started Failed"
+    echo -e "Failure"
     exit 1
 fi
 # rm -rf /usr/share/nginx/html/* 
