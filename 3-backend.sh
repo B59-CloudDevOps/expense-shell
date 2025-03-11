@@ -39,6 +39,10 @@ echo -n "Downloading $component Content:"
 curl -o /tmp/$component.zip https://expense-web-app.s3.amazonaws.com/$component.zip &>> $logFile
 stat $?
 
+echo -n "Configuring systemd service:"
+cp backend.service /etc/systemd/system/backend.service
+stat $? 
+
 echo -n "Extracting $component Content:"
 cd /app/
 unzip -o /tmp/$component.zip &>> $logFile
@@ -52,9 +56,6 @@ echo -n "Comfiguring the permissions:"
 chmod -R 755 /app && chown -R $appUser:$appUser /app
 stat $?
 
-echo -n "Configuring systemd service:"
-cp backend.service /etc/systemd/system/backend.service
-stat $? 
 
 echo -n "Installing $component client:"
 dnf install mysql-server -y  &>> $logFile
