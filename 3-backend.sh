@@ -53,7 +53,7 @@ chmod -R 755 /app && chown -R $appUser:$appUser /app
 stat $?
 
 echo -n "Configuring systemd service:"
-cp $component.service /etc/systemd/system/$component.service
+cp backend.service /etc/systemd/system/backend.service
 stat $? 
 
 echo -n "Installing $component client:"
