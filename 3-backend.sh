@@ -21,7 +21,7 @@ stat() {
 echo -n "Installing NodeJS:"
 dnf module disable nodejs -y    &>> $logFile
 dnf module enable nodejs:20 -y  &>> $logFile
-dnf instann nodejs -y           &>> $logFile
+dnf install nodejs -y           &>> $logFile
 stat $? 
 
 echo -n "Creating Application User - $appUser :"
