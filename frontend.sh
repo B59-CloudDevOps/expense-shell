@@ -3,6 +3,12 @@
 component=frontend
 logFile=/tmp/$component.log
 # Common function to print the status of the component
+if [ $(id -u) -ne 0 ]; then 
+    echo -e "\e[31m You should be root user to perform this script \e[0m"
+    echo -e "Execute this script as root user \n\t \e[31m sudo bash $0 \e[0m"
+    exit 2
+fi
+
 stat() {
     if [ $1 -eq 0 ]; then 
         echo -e "\e[32m Success \e[0m"    
