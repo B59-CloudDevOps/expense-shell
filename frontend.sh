@@ -25,11 +25,6 @@ echo -n "Configuring Proxy:"
 cp expense.conf /etc/nginx/default.d/expense.conf  &>> $logFile
 stat $?
 
-echo -n "Starting Nginx:"
-systemctl enable nginx   &>> $logFile
-systemctl start nginx    &>> $logFile
-stat $?
-
 echo -n "Clearning Old $component Content:"
 rm -rf /usr/share/nginx/html/* 
 stat $?
@@ -44,6 +39,7 @@ unzip -o /tmp/$component.zip &>> $logFile
 stat $?
 
 echo -n "Restarting Nginx:"
+systemctl enable nginx   &>> $logFile
 systemctl restart nginx 
 stat $?
 
