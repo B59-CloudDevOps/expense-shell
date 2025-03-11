@@ -1,8 +1,8 @@
 #!/bin/bash
 
-echo -n "Installing Nginx:"
+echo -e "Installing Nginx:"
 dnf install nginx -y     &>> /tmp/frontend.log
-echo -n "Starting Nginx:"
+echo -e "Starting Nginx:"
 systemctl enable nginx   &>> /tmp/frontend.log
 systemctl start nginx    &>> /tmp/frontend.log
 # rm -rf /usr/share/nginx/html/* 
