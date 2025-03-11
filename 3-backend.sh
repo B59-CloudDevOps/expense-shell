@@ -56,7 +56,6 @@ echo -n "Comfiguring the permissions:"
 chmod -R 755 /app && chown -R $appUser:$appUser /app
 stat $?
 
-
 echo -n "Installing $component client:"
 dnf install mysql-server -y  &>> $logFile
 stat $? 
