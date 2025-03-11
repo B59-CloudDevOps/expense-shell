@@ -27,7 +27,7 @@ systemctl start  mysqld  &>> $logFile
 stat $? 
 
 echo "Configuring $component root password:"
-mysql_secure_installation --set-root-pass ExpenseApp@1
+mysql_secure_installation --set-root-pass ExpenseApp@1 &>> $logFile
 stat $? 
 
 echo -n "*****  $component Execution Completed  *****"
