@@ -2,7 +2,8 @@
 component=backend
 appUser=expense
 rootPass=$1
-source common.sh                                            # Importing common functions from common.sh
+source common.sh         
+                                   # Importing common functions from common.sh
 if [ -z $1 ]; then 
     echo -e "\e[31m Please provide the password to set for mysql root user \e[0m"
     echo -e "Example usage: \n\t \e[35m sudo bash $0 password \e[0m"
