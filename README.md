@@ -21,3 +21,22 @@ NFR:
 
 If a function is defined outside the file, then we need to source the file
     # source fileName.sh
+
+> We automated the Configuration Management and some of the manual actions are:
+    Mysql:
+        1) Created server manually from UI 
+        2) Logged on to server 
+        3) Made a git clone 
+        4) Executed the script manually
+
+    Backend:
+        1) Created server manually from UI 
+        2) Logged on to server 
+        3) Made a git clone 
+        4) Executed the script manually
+
+    Frontend:
+        1) Created server manually from UI 
+        2) Logged on to server 
+        3) Made a git clone 
+        4) Executed the script manually
