@@ -6,7 +6,7 @@ source common.sh                                            # Importing common f
 if [ -z $1 ]; then 
     echo -e "\e[31m Please provide the password to set for mysql root user \e[0m"
     echo -e "Example usage: \n\t \e[35m sudo bash $0 password \e[0m"
-    exit 1
+    exit 2
 fi
 
 echo -n "Installing NodeJS:"
