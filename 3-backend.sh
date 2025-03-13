@@ -61,7 +61,7 @@ dnf install mysql-server -y  &>> $logFile
 stat $? 
 
 echo -n "Injecting $component schema:"
-mysql -h 172.31.41.47 -uroot -pExpenseApp@1 < /app/schema/backend.sql &>> $logFile
+mysql -h mysql.cloudapps.today -uroot -pExpenseApp@1 < /app/schema/backend.sql &>> $logFile
 stat $? 
 
 echo -n "Starting $component Service:"
