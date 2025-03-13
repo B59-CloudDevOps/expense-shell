@@ -19,3 +19,6 @@ NFR:
     > Re-run of code should work.
     > 14
 
+
+If a function is defined outside the file, then we need to source the file
+    # source fileName.sh
