@@ -12,3 +12,10 @@ Golden Rules to be followed when automating the manual process
 
 ### DRY (Don't Repeat Yourself) and WET (Write Everything Twice) are software engineering principles that describe how to write code. DRY code is preferred because it's easier to maintain and scale. 
 > DRY code is achieved by abstracting out common functionality into functions, classes, or modules. WET code is achieved by copying and pasting blocks of code. 
+
+NFR:
+    > Code should be dry
+    > Passwords should not be hardcoded
+    > Re-run of code should work.
+    > 14
+
