@@ -2,11 +2,18 @@
 component=backend
 logFile=/tmp/$component.log
 appUser=expense
+rootPass=$1
 # Common function to print the status of the component
 if [ $(id -u) -ne 0 ]; then 
     echo -e "\e[31m You should be root user to perform this script \e[0m"
     echo -e "Example usage: \n\t \e[35m sudo bash $0 \e[0m"
     exit 2
+fi
+
+if [ -z $1 ]; then 
+    echo -e "\e[31m Please provide the password to set for mysql root user \e[0m"
+    echo -e "Example usage: \n\t \e[35m sudo bash $0 password \e[0m"
+    exit 1
 fi
 
 stat() {
@@ -61,7 +68,7 @@ dnf install mysql-server -y  &>> $logFile
 stat $? 
 
 echo -n "Injecting $component schema:"
-mysql -h mysql.cloudapps.today -uroot -pExpenseApp@1 < /app/schema/backend.sql &>> $logFile
+mysql -h mysql.cloudapps.today -uroot -p$rootPass < /app/schema/backend.sql &>> $logFile
 stat $? 
 
 echo -n "Starting $component Service:"
